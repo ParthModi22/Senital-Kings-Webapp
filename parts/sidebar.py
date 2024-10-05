@@ -36,7 +36,7 @@ def sidebar_navigation():
     with col1:
         st.write("")
     with col2:
-        st.image('statics/images.jpeg', use_column_width=True)
+        st.image('statics/logo4.png', use_column_width=True)
     with col3:
         st.write("")
     
@@ -50,7 +50,7 @@ def sidebar_navigation():
     # Create sidebar navigation options
     page = st.sidebar.selectbox(
         "Choose a section:",
-        ["Introduction", "Irrigation Monitoring"]
+        ["Introduction", "Irrigation Monitoring","NDVI Map","Soil Moisture"]
     )
 
     return page

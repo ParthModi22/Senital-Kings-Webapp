@@ -43,7 +43,7 @@ How to use
 
     #Drawing map
     with col1:
-        st.subheader("Select Farm Area")
+        st.markdown("<h3 style='color: #F0E68C;'>Select Farm Area</h3>", unsafe_allow_html=True)
         m_draw = leafmap.Map(center=[31.14, 75.34], zoom=15)
         # m_draw = leafmap.Map(center=[26.91, 70.9], zoom=15)
         m_draw.add_basemap("HYBRID")
@@ -52,7 +52,7 @@ How to use
 
     # Result map
     with col2:
-        st.subheader("NDVI Map")
+        st.markdown("<h3 style='color: #F0E68C;'>NDVI Map</h3>", unsafe_allow_html=True)
         m_result = leafmap.Map(center=[31.14, 75.34], zoom=15)
         # m_result = leafmap.Map(center=[26.91, 70.9], zoom=15)
         m_result.add_basemap("HYBRID")

@@ -44,7 +44,7 @@ How to use
 
     # Drawing map
     with col1:
-        st.subheader("Select Farm Area")
+        st.markdown("<h3 style='color: #F0E68C;'>Select Farm Area</h3>", unsafe_allow_html=True)
         m_draw1 = leafmap.Map(center=[31.14, 75.34], zoom=15)
         # m_draw = leafmap.Map(center=[26.91, 70.9], zoom=15)
         m_draw1.add_basemap("HYBRID")
@@ -53,7 +53,7 @@ How to use
 
     # Result map
     with col2:
-        st.subheader("Soil Moisture Map")
+        st.markdown("<h3 style='color: #F0E68C;'>Soil Moisture Map</h3>", unsafe_allow_html=True)
         m_result1 = leafmap.Map(center=[31.14, 75.34], zoom=15)
         # m_result = leafmap.Map(center=[26.91, 70.9], zoom=15)
         m_result1.add_basemap("HYBRID")

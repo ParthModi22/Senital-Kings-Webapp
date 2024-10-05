@@ -2,9 +2,10 @@ import streamlit as st
 from parts.sidebar import sidebar_navigation
 from parts.irrigation import irrigation_monitoring
 from parts.irrigation import maps_visualization
+from parts.soilMoistue import on_page
 from parts.Intoduction import intro
 from parts.NDVI import webpage
-from parts.soilMoisture import on_page
+
 # Load custom CSS file to style the app
 #page config 
 st.set_page_config(page_title="Crop Monitoring",page_icon="🛰️",initial_sidebar_state="expanded")
