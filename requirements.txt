@@ -1,0 +1,8 @@
+streamlit==1.26.0
+leafmap==0.12.3
+numpy==1.25.0
+pandas==2.1.0
+matplotlib==3.8.0
+geopandas==0.13.2
+requests==2.31.0
+Pillow==10.0.1
