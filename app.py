@@ -3,6 +3,8 @@ from parts.sidebar import sidebar_navigation
 from parts.irrigation import irrigation_monitoring
 from parts.irrigation import maps_visualization
 from parts.Intoduction import intro
+from parts.NDVI import webpage
+from parts.soilMoisture import on_page
 # Load custom CSS file to style the app
 #page config 
 st.set_page_config(page_title="Crop Monitoring",page_icon="🛰️",initial_sidebar_state="expanded")
@@ -25,6 +27,10 @@ def main():
     elif page == "Irrigation Monitoring":
         maps_visualization()
         irrigation_monitoring()
+    elif page== "NDVI Map":
+        webpage()
+    elif page=="Soil Moisture":
+        on_page()
     # elif page == "Irrigation Mapping":
     #     irrigation_mapping()
     # elif page == "Farm Maps":
