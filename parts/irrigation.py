@@ -1,4 +1,4 @@
-import streamlit as st
+ import streamlit as st
 import requests
 import json
 import math
@@ -10,11 +10,15 @@ import requests
 
 # Function to create an interactive map for selecting location
 def interactive_location_selection_map():
-    st.subheader("📍 Interactive Location Selection Map")
-    st.write("Click on the map to select a location. The latitude and longitude of the selected location will be displayed below.")
+    #st.subheader("Irrigation Managaement")
+    st.write("""Efficient irrigation is critical for optimizing water use in agriculture. By using Evapotranspiration (ET) values, farmers can determine the precise amount of water required by their crops based on the actual rate of water loss from the soil and plants. This is a data-driven approach.  Helps in managing irrigation schedules more effectively, reducing water wastage, and ensuring crops receive just the right amount of moisture, which leads to healthier growth and improved yields.
 
+How to use 
+1)	Select current location or any location on map
+2)	Select – crop type and growth stage of the crop
+3)	Water required for the desired crop will be displayed on the screen (by calculating ET value)
+""")
     # Default location (center of the map)
-    
     initial_lat, initial_lon = 38.7946, -106.5348
 
     # Create a folium map centered on the default location
@@ -38,10 +42,7 @@ def interactive_location_selection_map():
         st.session_state['latitude'] = latitude
         st.session_state['longitude'] = longitude
 def maps_visualization():
-    st.title("🌍 Farm Maps Analysis")
-    st.write("""
-        This section provides farmers with comprehensive map analysis tools. Use the options below to switch between different map views, including moisture levels and 3D terrain visualization.
-    """)
+    st.title("Irrigation Management")
 
     # Unified Map Selector: Radio button to switch between different map views
     # map_type = st.radio(
@@ -55,7 +56,7 @@ def maps_visualization():
 
 
 def irrigation_monitoring():
-    st.title("🌿 Irrigation Requirement Monitoring")
+    st.subheader("Irrigation Requirement Monitoring")
     st.write("This section provides insights on the irrigation requirements for different crops based on their growth stage and location.")
 
     # Check if coordinates are already selected in session state from the map section
