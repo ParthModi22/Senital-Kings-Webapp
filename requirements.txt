@@ -1,8 +1,5 @@
 streamlit
 requests
-json
-matdatetime 
-foliustreamlit_folium 
 leafmap
 folium
 sentinelhub
@@ -10,4 +7,3 @@ matplotlib
 streamlit_folium
 shapely
 numpy
-datetime
