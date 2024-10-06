@@ -11,6 +11,29 @@ import leafmap.foliumap as leafmap
 from streamlit_folium import st_folium
 from folium.plugins import Draw
 import folium
+import google.generativeai as genai
+import os
+
+
+def AI(crop,lat,long,stage):
+    genai.configure(api_key="AIzaSyDcukeocIFxr-sYS3x2uJgfszJ6el77Hqo")
+
+# Load the generative model and generate content
+    model = genai.GenerativeModel("gemini-1.5-flash")
+    # crop = 'tomato'
+    # lat = 39
+    # long = -107
+    # stage = "initial"
+
+    response = model.generate_content(f"explain about {crop} and its water needs in following latitude and longitude: {lat:.2f} and {long:.2f} at {stage} growth stage and give output in a single para ")  
+    # response = model.generate_content(f"quantum computer ")  
+
+    # Print the generated content
+    # print()
+    s = response.text
+
+    return s
+
 
 # Function to create an interactive map for selecting location
 def interactive_location_selection_map():
@@ -30,17 +53,6 @@ How to use
     m_draw = leafmap.Map(center=[38.7946, -106.5348], zoom=15, draw_control = False)
 
 
-    st.markdown(
-    """
-    <style>
-    .map-container {
-        border: 5px solid black; /* You can adjust the color and thickness */
-        border-radius: 10px;     /* Optional: To round the corners */
-        padding: 5px;            /* Optional: Add padding */
-        margin: 10px;            /* Optional: Add margin */
-    }
-    </style>
-    """, unsafe_allow_html=True)
 
 
     m_draw.add_basemap("HYBRID")
@@ -51,7 +63,7 @@ How to use
 
 
     # map_data = st_folium(m_draw, height="400px", width="800px", key="draw_map")
-    map_data = st_folium(m_draw, height= 400, width= 1000, key="draw_map")
+    map_data = st_folium(m_draw, key="draw_map")
 
 
     st.markdown(
@@ -179,6 +191,27 @@ def irrigation_monitoring():
             st.success("The crop is sufficiently irrigated. No need for additional water.")
         else:
             st.warning(f"Amount of water needed: {water_needed:.2f} mm/day")
+
+        if 'latitude' in st.session_state:
+            s = AI(crop,st.session_state['latitude'],st.session_state['longitude'],growth_stage)
+            # st.write(s)
+
+        with st.container():
+                st.markdown("### **Insight**")
+                st.write(s)
+                st.markdown("<hr>", unsafe_allow_html=True)
+        
     else:
         st.warning("Unable to fetch weather data. Please try again.")
     
+
+
+
+
+
+# Retrieve the API key from the environment variable "GOOGLE_API_KEY"
+
+# export GOOGLE_API_KEY="AIzaSyDcukeocIFxr-sYS3x2uJgfszJ6el77Hqo"
+# write above in terminal
+
+
