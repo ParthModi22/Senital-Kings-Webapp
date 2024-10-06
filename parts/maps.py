@@ -1,7 +1,7 @@
 import streamlit as st
 import leafmap.foliumap as leafmap
 def map():
-    st.set_page_config(layout="wide")
+    # st.set_page_config(layout="wide")
 
     # Instructions and inference
     st.markdown(
