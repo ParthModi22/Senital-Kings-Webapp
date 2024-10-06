@@ -111,7 +111,8 @@ def irrigation_monitoring():
     if 'latitude' in st.session_state and 'longitude' in st.session_state:
         latitude = st.session_state['latitude']
         longitude = st.session_state['longitude']
-        st.write(f"**Selected Location**: Latitude = {latitude:.4f}, Longitude = {longitude:.4f}")
+        if latitude:
+            st.write(f"**Selected Location**: Latitude = {latitude:.4f}, Longitude = {longitude:.4f}")
     else:
         st.warning("Please select your farm location from the 'Farm Maps' section.")
         return
