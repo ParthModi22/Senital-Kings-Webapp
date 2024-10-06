@@ -45,10 +45,6 @@ def render_sidebar():
         st.write("")
 
     # Sidebar title and navigation
-    st.sidebar.markdown(
-        "<div style='text-align: center; font-size:24px; font-weight:bold;'>SENTINAL KINGS</div>",
-        unsafe_allow_html=True
-    )
     
     # Navigation using radio buttons instead of a dropdown
     st.sidebar.title("Navigation")
