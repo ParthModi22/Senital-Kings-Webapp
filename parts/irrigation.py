@@ -173,7 +173,7 @@ def irrigation_monitoring():
         crop = st.selectbox("Select Crop Type", list(kc_values.keys()))
     # Growth stage selection dropdown based on the selected crop
 
-        languages_list = ['english','hindi','urdu','marathi','tamil','telugu']
+        languages_list = ['English','Hindi','Urdu','Marathi','Tamil','Telugu']
 
         growth_stage = st.selectbox("Select Growth Stage", kc_values[crop].keys())
         language = st.selectbox("Select any language for Insight", languages_list)
