@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib as mpl
 import google.generativeai as genai
+import json
 
 
 
@@ -55,6 +56,10 @@ How to use
 3)	Inference of each grid is obtained""")
     
     # Create two columns for the maps
+
+    with open('utlis/kc_values.json', 'r') as f:
+        kc_values = json.load(f)
+
     col1, col2 = st.columns(2)
 
     # Sidebar controls
@@ -133,7 +138,7 @@ How to use
         lat = st.session_state.get('latitude')
         long = st.session_state.get('longitude')
 
-        crops = st.text_input("Crop:")
+        crops = st.selectbox("Select Crop Type", list(kc_values.keys()))
         if st.button("Submit") and crops and st.session_state.get('latitude') and language1:
             s = AI(crops,lat,long,language1)
         # growth_stage = st.selectbox("Select Growth Stage", kc_values[crop].keys())
@@ -333,6 +338,7 @@ def generate_grid(polygon, grid_size):
     # Determine NDVI range
     min_ndvi = min(ndvi_values)
     max_ndvi = max(ndvi_values)
+
 
     print("max ndvi: ",max_ndvi, " min_ndvi: ",min_ndvi)
     
