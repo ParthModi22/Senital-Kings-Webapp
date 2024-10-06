@@ -258,7 +258,7 @@ def generate_grid(polygon, grid_size):
 
     if val > 30:
         # st.markdown("**Teri baap ki zameen hai kya!!! \n Reload kar page ko**")
-        st.markdown('<p style="font-size:54px;">Teri baap ki zameen hai kya!!! \n Reload kar page ko</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:54px;">Tere baap ki zameen hai kya!!! \n Reload kar page ko</p>', unsafe_allow_html=True)
         # st.rerun()  # Rerun the page when condition is satisfied
         st.stop()  # Rerun the page when condition is satisfied
 
