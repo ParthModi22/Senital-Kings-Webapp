@@ -25,7 +25,7 @@ def AI(crop,lat,long,stage,language):
     # long = -107
     # stage = "initial"
 
-    response = model.generate_content(f"explain about {crop} and its water needs in following latitude and longitude: {lat:.2f} and {long:.2f} at {stage} growth stage and give output in a single para in {language} ")  
+    response = model.generate_content(f"explain about {crop} and its water needs in following latitude and longitude: {lat:.2f} and {long:.2f} at {stage} growth stage and give output in a single para in {language}. Don't mention coordinates, only place name")  
     # response = model.generate_content(f"quantum computer ")  
 
     # Print the generated content
