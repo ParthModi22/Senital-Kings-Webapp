@@ -38,7 +38,7 @@ How to use
         grid_size = 0.001
         opacity = st.slider("Grid Opacity", 0.1, 1.0, 0.5, 0.1)
     
-        if st.button("Switch to SMI Map"):
+        if st.button("Show SMI Map"):
             st.session_state.grid_squares = []
             st.session_state.last_polygon = None 
 
@@ -252,7 +252,7 @@ def generate_grid(polygon, grid_size):
     
     if val > 30:
         # st.markdown("**Teri baap ki zameen hai kya!!! \n Reload kar page ko**")
-        st.markdown('<p style="font-size:54px;">Tere baap ki zameen hai kya!!! \n Reload kar page ko</p>', unsafe_allow_html=True)
+        st.markdown('<p style="font-size:54px;">TereH baap ki zameen hai kya!!! \n Reload kar page ko</p>', unsafe_allow_html=True)
         # st.rerun()  # Rerun the page when condition is satisfied
         st.stop()  # Rerun the page when condition is satisfied
 
