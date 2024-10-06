@@ -10,6 +10,28 @@ from sentinelhub import SHConfig, BBox, CRS, DataCollection, SentinelHubRequest,
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib as mpl
+import google.generativeai as genai
+
+
+
+def AI(crop,lat,long,stage,language):
+    genai.configure(api_key="AIzaSyDcukeocIFxr-sYS3x2uJgfszJ6el77Hqo")
+
+# Load the generative model and generate content
+    model = genai.GenerativeModel("gemini-1.5-flash")
+    # crop = 'tomato'
+    # lat = 39
+    # long = -107
+    # stage = "initial"
+
+    response = model.generate_content(f"explain about and things needed for better growth of {crop}  in the following latitude and longitude: {lat:.2f} and {long:.2f}  and give output in a single para in {language} ")  
+    # response = model.generate_content(f"quantum computer ")  
+
+    # Print the generated content
+    # print()
+    s = response.text
+
+    return s
 
 def webpage():   #to be called
     # Initialize session state
@@ -17,6 +39,11 @@ def webpage():   #to be called
         st.session_state.grid_squares = []
     if 'last_polygon' not in st.session_state:
         st.session_state.last_polygon = None
+    if 'latitude' not in st.session_state:
+        st.session_state.latitude = None
+
+    if 'longitude' not in st.session_state:
+        st.session_state.longitude = None
 
     # Set up the Streamlit page
     st.title("NDVI Map")
@@ -67,6 +94,8 @@ How to use
         
             if geometry["type"] == "Polygon":
                 coords = geometry["coordinates"][0]
+                st.session_state.latitude, st.session_state.longitude =coords[0][0],coords[0][1]
+                
             
             # Only update if the polygon has changed
                 if str(coords) != str(st.session_state.last_polygon):
@@ -85,6 +114,24 @@ How to use
             ).add_to(m_result)
 
         st_folium(m_result, height=400, width=None, key="result_map")
+
+    
+    with st.container():
+                # crop = st.selectbox("Select Crop Type", list(kc_values.keys()))
+    # Growth stage selection dropdown based on the selected crop
+                languages_list = ['English','Hindi','Urdu','Marathi','Tamil','Telugu']
+                language = st.selectbox("Select any language for Insight", languages_list)
+                lat = st.session_state.get('latitude')
+                long = st.session_state.get('longitude')
+
+                crops = st.text_input("Crop:")
+                if st.button("Submit"):
+                    s = AI(crops,lat,long,language)
+                # growth_stage = st.selectbox("Select Growth Stage", kc_values[crop].keys())
+                    st.markdown("### **Insight**")
+                    st.write(s)
+                    st.markdown("<hr>", unsafe_allow_html=True)
+        
 
     # Show stats
     if st.session_state.grid_squares:
