@@ -15,7 +15,7 @@ import google.generativeai as genai
 import os
 
 
-def AI(crop,lat,long,stage):
+def AI(crop,lat,long,stage,language):
     genai.configure(api_key="AIzaSyDcukeocIFxr-sYS3x2uJgfszJ6el77Hqo")
 
 # Load the generative model and generate content
@@ -25,7 +25,7 @@ def AI(crop,lat,long,stage):
     # long = -107
     # stage = "initial"
 
-    response = model.generate_content(f"explain about {crop} and its water needs in following latitude and longitude: {lat:.2f} and {long:.2f} at {stage} growth stage and give output in a single para ")  
+    response = model.generate_content(f"explain about {crop} and its water needs in following latitude and longitude: {lat:.2f} and {long:.2f} at {stage} growth stage and give output in a single para in {language} ")  
     # response = model.generate_content(f"quantum computer ")  
 
     # Print the generated content
@@ -63,20 +63,20 @@ How to use
 
 
     # map_data = st_folium(m_draw, height="400px", width="800px", key="draw_map")
-    map_data = st_folium(m_draw, key="draw_map")
+    map_data = st_folium(m_draw, height=400, width=1000,key="draw_map")
 
 
-    st.markdown(
-        """
-        <style>
-        .main .block-container {
-            padding: 0;
-            margin: 0;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-        )
+    # st.markdown(
+    #     """
+    #     <style>
+    #     .main .block-container {
+    #         padding: 0;
+    #         margin: 0;
+    #     }
+    #     </style>
+    #     """,
+    #     unsafe_allow_html=True
+    #     )
 
 
 
@@ -172,7 +172,10 @@ def irrigation_monitoring():
         crop = st.selectbox("Select Crop Type", list(kc_values.keys()))
     # Growth stage selection dropdown based on the selected crop
 
+        languages_list = ['English','Hindi','Urdu','Marathi','Tamil','Telugu']
+
         growth_stage = st.selectbox("Select Growth Stage", kc_values[crop].keys())
+        language = st.selectbox("Select any language for Insight", languages_list)
     # Get the Kc value for the selected crop and growth stage
 
         kc = kc_values[crop][growth_stage]
@@ -193,7 +196,7 @@ def irrigation_monitoring():
             st.warning(f"Amount of water needed: {water_needed:.2f} mm/day")
 
         if 'latitude' in st.session_state:
-            s = AI(crop,st.session_state['latitude'],st.session_state['longitude'],growth_stage)
+            s = AI(crop,st.session_state['latitude'],st.session_state['longitude'],growth_stage,language)
             # st.write(s)
 
         with st.container():
