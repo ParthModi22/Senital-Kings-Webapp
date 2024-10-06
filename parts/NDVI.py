@@ -78,7 +78,7 @@ How to use
         st.markdown("<h3 style='color: #F0E68C;'>Select Farm Area</h3>", unsafe_allow_html=True)
         m_draw = leafmap.Map(center=[31.14, 75.34], zoom=15)
         # m_draw = leafmap.Map(center=[26.91, 70.9], zoom=15)
-        m_draw.add_basemap("HYBRID")
+        m_draw.add_basemap("SATELLITE")
         Draw(export=True).add_to(m_draw)
         draw_output = st_folium(m_draw, height=400, width=None, key="draw_map")
 
@@ -87,7 +87,7 @@ How to use
         st.markdown("<h3 style='color: #F0E68C;'>NDVI Map</h3>", unsafe_allow_html=True)
         m_result = leafmap.Map(center=[31.14, 75.34], zoom=15,draw_control = False)
         # m_result = leafmap.Map(center=[26.91, 70.9], zoom=15)
-        m_result.add_basemap("HYBRID")
+        m_result.add_basemap("SATELLITES")
 
 
         # Process the drawn polygon
