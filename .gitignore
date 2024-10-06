@@ -3,3 +3,4 @@ __pycache__/
 *.pyc
 # Ignore macOS system file
 .DS_Store
+.venv
