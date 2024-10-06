@@ -4,6 +4,7 @@ from parts.irrigation import maps_visualization
 from parts.soilMoistue import on_page
 from parts.Intoduction import intro
 from parts.NDVI import webpage
+from parts.maps import map
 
 def render_sidebar():
     # Initialize session state for the toggle button
@@ -50,7 +51,7 @@ def render_sidebar():
     st.sidebar.title("Navigation")
     page = st.sidebar.radio(
         "Choose a section:",
-        ["Introduction", "Irrigation Monitoring", "NDVI Map", "Soil Moisture"]
+        ["Introduction", "Irrigation Monitoring", "NDVI Map", "Soil Moisture","Split Map"]
     )
 
     # Render the appropriate page based on selection
@@ -63,6 +64,8 @@ def render_sidebar():
         webpage()
     elif page == "Soil Moisture":
         on_page()
+    elif page=="Split Map":
+        map()
 
     return page
     
