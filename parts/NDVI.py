@@ -116,21 +116,10 @@ How to use
         st_folium(m_result, height=400, width=None, key="result_map")
 
     
-    with st.container():
+    # with st.container():
                 # crop = st.selectbox("Select Crop Type", list(kc_values.keys()))
     # Growth stage selection dropdown based on the selected crop
-                languages_list = ['English','Hindi','Urdu','Marathi','Tamil','Telugu']
-                language = st.selectbox("Select any language for Insight", languages_list)
-                lat = st.session_state.get('latitude')
-                long = st.session_state.get('longitude')
-
-                crops = st.text_input("Crop:")
-                if st.button("Submit") and crops and lat:
-                    s = AI(crops,lat,long,language)
-                # growth_stage = st.selectbox("Select Growth Stage", kc_values[crop].keys())
-                    st.markdown("### **Insight**")
-                    st.write(s)
-                    st.markdown("<hr>", unsafe_allow_html=True)
+                
         
 
     # Show stats
@@ -138,6 +127,18 @@ How to use
         print("DONE")
         # st.metric("Grid Squares Generated", len(st.session_state.grid_squares))
         show_legend()
+        languages_list = ['English','Hindi','Urdu','Marathi','Tamil','Telugu']
+        language = st.selectbox("Select any language for Insight", languages_list)
+        lat = st.session_state.get('latitude')
+        long = st.session_state.get('longitude')
+
+        crops = st.text_input("Crop:")
+        if st.button("Submit") and crops and lat:
+            s = AI(crops,lat,long,language)
+        # growth_stage = st.selectbox("Select Growth Stage", kc_values[crop].keys())
+            st.markdown("### **Insight**")
+            st.write(s)
+            st.markdown("<hr>", unsafe_allow_html=True)
 
  
 
