@@ -175,7 +175,7 @@ def irrigation_monitoring():
         languages_list = ['english','hindi','urdu','marathi','tamil','telugu']
 
         growth_stage = st.selectbox("Select Growth Stage", kc_values[crop].keys())
-        language = st.selectbox("Select any language for Insight", kc_values[crop].keys())
+        language = st.selectbox("Select any language for Insight", languages_list)
     # Get the Kc value for the selected crop and growth stage
 
         kc = kc_values[crop][growth_stage]
