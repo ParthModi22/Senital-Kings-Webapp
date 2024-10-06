@@ -133,7 +133,7 @@ How to use
         long = st.session_state.get('longitude')
 
         crops = st.text_input("Crop:")
-        if st.button("Submit") and crops and lat:
+        if st.button("Submit") and crops and st.session_state.get('latitude'):
             s = AI(crops,lat,long,language)
         # growth_stage = st.selectbox("Select Growth Stage", kc_values[crop].keys())
             st.markdown("### **Insight**")
