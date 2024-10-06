@@ -108,11 +108,11 @@ def irrigation_monitoring():
     st.write("This section provides insights on the irrigation requirements for different crops based on their growth stage and location.")
 
     # Check if coordinates are already selected in session state from the map section
-    if 'latitude' in st.session_state and 'longitude' in st.session_state:
+    if 'latitude' in st.session_state and 'longitude' in st.session_state and st.session_state['latitude'] is not None:
         latitude = st.session_state['latitude']
         longitude = st.session_state['longitude']
-        if latitude:
-            st.write(f"**Selected Location**: Latitude = {latitude:.4f}, Longitude = {longitude:.4f}")
+        # if latitude:
+        st.write(f"**Selected Location**: Latitude = {latitude:.4f}, Longitude = {longitude:.4f}")
     else:
         st.warning("Please select your farm location from the 'Farm Maps' section.")
         return
