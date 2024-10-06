@@ -55,7 +55,7 @@ How to use
 
 
 
-    m_draw.add_basemap("HYBRID")
+    m_draw.add_basemap("SATELLITE")
     m_draw.add_child(folium.LatLngPopup()) # shows that lat and long in folium
     Draw(export=True).add_to(m_draw)
 
