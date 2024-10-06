@@ -63,20 +63,20 @@ How to use
 
 
     # map_data = st_folium(m_draw, height="400px", width="800px", key="draw_map")
-    map_data = st_folium(m_draw, key="draw_map")
+    map_data = st_folium(m_draw, height=400, width=1000,key="draw_map")
 
 
-    st.markdown(
-        """
-        <style>
-        .main .block-container {
-            padding: 0;
-            margin: 0;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-        )
+    # st.markdown(
+    #     """
+    #     <style>
+    #     .main .block-container {
+    #         padding: 0;
+    #         margin: 0;
+    #     }
+    #     </style>
+    #     """,
+    #     unsafe_allow_html=True
+    #     )
 
 
 
