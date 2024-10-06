@@ -7,3 +7,4 @@ matplotlib
 streamlit_folium
 shapely
 numpy
+google.generativeai
