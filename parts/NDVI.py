@@ -14,7 +14,7 @@ import google.generativeai as genai
 
 
 
-def AI(crop,lat,long,stage,language):
+def AI(crop,lat,long,language):
     genai.configure(api_key="AIzaSyDcukeocIFxr-sYS3x2uJgfszJ6el77Hqo")
 
 # Load the generative model and generate content
@@ -94,6 +94,7 @@ How to use
         
             if geometry["type"] == "Polygon":
                 coords = geometry["coordinates"][0]
+                print(coords)
                 st.session_state.latitude, st.session_state.longitude =coords[0][0],coords[0][1]
                 
             
@@ -128,13 +129,13 @@ How to use
         # st.metric("Grid Squares Generated", len(st.session_state.grid_squares))
         show_legend()
         languages_list = ['English','Hindi','Urdu','Marathi','Tamil','Telugu']
-        language = st.selectbox("Select any language for Insight", languages_list)
+        language1 = st.selectbox("Select any language for Insight", languages_list)
         lat = st.session_state.get('latitude')
         long = st.session_state.get('longitude')
 
         crops = st.text_input("Crop:")
-        if st.button("Submit") and crops and st.session_state.get('latitude'):
-            s = AI(crops,lat,long,language)
+        if st.button("Submit") and crops and st.session_state.get('latitude') and language1:
+            s = AI(crops,lat,long,language1)
         # growth_stage = st.selectbox("Select Growth Stage", kc_values[crop].keys())
             st.markdown("### **Insight**")
             st.write(s)
