@@ -37,7 +37,7 @@ How to use
         grid_size = 0.001
         opacity = st.slider("Grid Opacity", 0.1, 1.0, 0.5, 0.1)
     
-        if st.button("Clear Grid"):
+        if st.button("Switch to NDVI Map"):
             st.session_state.grid_squares = []
             st.session_state.last_polygon = None
 
@@ -53,7 +53,7 @@ How to use
     # Result map
     with col2:
         st.markdown("<h3 style='color: #F0E68C;'>NDVI Map</h3>", unsafe_allow_html=True)
-        m_result = leafmap.Map(center=[31.14, 75.34], zoom=15)
+        m_result = leafmap.Map(center=[31.14, 75.34], zoom=15,draw_control = False)
         # m_result = leafmap.Map(center=[26.91, 70.9], zoom=15)
         m_result.add_basemap("HYBRID")
 
@@ -249,9 +249,18 @@ def generate_grid(polygon, grid_size):
 
     val = x_coords.size * y_coords.size
     
-    if val > 36:
-        st.write("Teri baap ki zameen hai kya!!! \n Reload kar page ko")
-        st.experimental_rerun()  # Rerun the page when condition is satisfied
+    # if val > 36:
+    #     st.write("Teri baap ki zameen hai kya!!! \n Reload kar page ko")
+    #     st.experimental_rerun()  # Rerun the page when condition is satisfied
+
+
+
+
+    if val > 30:
+        # st.markdown("**Teri baap ki zameen hai kya!!! \n Reload kar page ko**")
+        st.markdown('<p style="font-size:54px;">Teri baap ki zameen hai kya!!! \n Reload kar page ko</p>', unsafe_allow_html=True)
+        # st.rerun()  # Rerun the page when condition is satisfied
+        st.stop()  # Rerun the page when condition is satisfied
 
     ndvi_values = []
     

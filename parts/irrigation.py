@@ -7,6 +7,10 @@ import folium
 from streamlit_folium import st_folium
 import leafmap.foliumap as leafmap
 import requests
+import leafmap.foliumap as leafmap
+from streamlit_folium import st_folium
+from folium.plugins import Draw
+import folium
 
 # Function to create an interactive map for selecting location
 def interactive_location_selection_map():
@@ -19,18 +23,50 @@ How to use
 3)	Water required for the desired crop will be displayed on the screen (by calculating ET value)
 """)
     # Default location (center of the map)
-    initial_lat, initial_lon = 38.7946, -106.5348
+    # initial_lat, initial_lon = 38.7946, -106.5348;;
 
     # Create a folium map centered on the default location
-    map_ = folium.Map(location=[initial_lat, initial_lon], zoom_start=5)
+   
+    m_draw = leafmap.Map(center=[38.7946, -106.5348], zoom=15, draw_control = False)
 
-    # Enable drawing tool for area selection
-    draw = folium.plugins.Draw(export=True)
-    map_.add_child(draw)
-    map_.add_child(folium.LatLngPopup())
 
-    # Display the map in Streamlit
-    map_data = st_folium(map_, width=700, height=500)
+    st.markdown(
+    """
+    <style>
+    .map-container {
+        border: 5px solid black; /* You can adjust the color and thickness */
+        border-radius: 10px;     /* Optional: To round the corners */
+        padding: 5px;            /* Optional: Add padding */
+        margin: 10px;            /* Optional: Add margin */
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+
+    m_draw.add_basemap("HYBRID")
+    m_draw.add_child(folium.LatLngPopup()) # shows that lat and long in folium
+    Draw(export=True).add_to(m_draw)
+
+
+
+
+    # map_data = st_folium(m_draw, height="400px", width="800px", key="draw_map")
+    map_data = st_folium(m_draw, height= 400, width= 1000, key="draw_map")
+
+
+    st.markdown(
+        """
+        <style>
+        .main .block-container {
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+        )
+
+
 
     # If the user clicked on the map, retrieve the coordinates
     if map_data and map_data['last_clicked']:
