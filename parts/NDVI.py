@@ -69,7 +69,7 @@ How to use
         grid_size = 0.001
         opacity = st.slider("Grid Opacity", 0.1, 1.0, 0.5, 0.1)
     
-        if st.button("Switch to NDVI Map"):
+        if st.button("Show NDVI Map"):
             st.session_state.grid_squares = []
             st.session_state.last_polygon = None
 
